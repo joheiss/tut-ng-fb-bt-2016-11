@@ -1,0 +1,87 @@
+<div class="container">
+    <form autocomplete="off" novalidate [formGroup]="form">
+
+        <div class="text-xs-center">
+            <img class="img-thumbnail" height="auto" width="128px"
+                 [src]="photoURL.value.length > 0 ? photoURL.value : './assets/img/anonymous_user.png'">
+        </div>
+        <div class="form-group row">
+            <label for="email" class="col-sm-3 col-form-label">Email:</label>
+            <div class="col-sm-6">
+                <input type="text" id="email" name="email" formControlName="email"
+                       class="form-control" aria-describedby="emailHelp" placeholder="Enter email address">
+                <small id="emailHelp" class="form-text text-muted text-xs-left">
+                    <small>This email will be used by us for all communications.</small>
+                </small>
+                <div *ngIf="hasError('email', 'required')" class="alert alert-danger" role="alert">
+                    <small>Please enter a valid email address.</small>
+                </div>
+                <div *ngIf="hasError('email', 'invalidMail')" class="alert alert-danger" role="alert">
+                    <small>The entered email has an invalid format. Please correct.</small>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="mode === 'register'" class="form-group row">
+            <label for="password" class="col-sm-3 col-form-label">Password:</label>
+            <div class="col-sm-6">
+                <input type="password" id="password" name="password" formControlName="password" #password
+                       class="form-control" aria-describedby="passwordHelp" placeholder="Enter your password">
+                <small id="passwordHelp" class="form-text text-muted text-xs-left">
+                    <small>Enter a secure password. One that isn't easy to guess.</small>
+                </small>
+                <div *ngIf="hasError('password', 'required')" class="alert alert-danger" role="alert">
+                    <small>Please enter a password.</small>
+                </div>
+                <div *ngIf="hasError('password', 'minlength')" class="alert alert-danger" role="alert">
+                    <small>The password must be at least {{form.controls['password'].errors?.minlength.requiredLength}}
+                        characters long.
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="mode === 'register'" class="form-group row">
+            <label for="password" class="col-sm-3 col-form-label">Confirm Password:</label>
+            <div class="col-sm-6">
+                <input type="password" id="confirm" name="confirm" formControlName="confirm"
+                       class="form-control" aria-describedby="confirmHelp" placeholder="Repeat your password">
+                <small id="confirmHelp" class="form-text text-muted text-xs-left">
+                    <small>Repeat your password.</small>
+                </small>
+                <div *ngIf="hasError('confirm', 'required')" class="alert alert-danger" role="alert">
+                    <small>Please repeat your password here.</small>
+                </div>
+                <div *ngIf="hasError('confirm', 'mismatchedPasswords')" class="alert alert-danger" role="alert">
+                    <small>Passwords are not identical. Please correct.</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="displayName" class="col-sm-3 col-form-label">Name:</label>
+            <div class="col-sm-6">
+                <input type="text" id="displayName" name="displayName" formControlName="displayName"
+                       class="form-control" aria-describedby="displayNameHelp" placeholder="Enter your name">
+                <small id="displayNameHelp" class="form-text text-muted text-xs-left">
+                    <small>This name will be shown on all our screens.</small>
+                </small>
+                <div *ngIf="hasError('displayName', 'required')" class="alert alert-danger" role="alert">
+                    <small>Please repeat your password here.</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="photoURL" class="col-sm-3 col-form-label">Photo URL:</label>
+            <div class="col-sm-6">
+                <input type="text" id="photoURL" name="photoURL" formControlName="photoURL" #photoURL
+                       class="form-control" aria-describedby="photoURLHelp" placeholder="Enter your photo URL">
+                <small id="PhotoURLHelp" class="form-text text-muted text-xs-left">
+                    <small>This photo will be shown on some of our screens.</small>
+                </small>
+            </div>
+        </div>
+
+    </form>
+</div>

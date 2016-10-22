@@ -1,0 +1,13 @@
+.jo-app {
+    margin-top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.jo-message-area {
+    margin-top: 20px;
+}
+
+.jo-selectable-list-item:hover {
+    cursor: pointer;
+}

@@ -1,0 +1,35 @@
+<nav class="jo-top-menu navbar navbar-fixed-top navbar-dark bg-inverse">
+    <div class="container">
+        <a class="navbar-brand">
+            <img class="logo" src="./assets/img/jovisco_logo_183x50.png">
+        </a>
+        <ul class="nav navbar-nav" routerLinkActive="active">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="home" routerLinkActive="menu-active">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="courses" routerLinkActive="menu-active">Courses</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="login" routerLinkActive="menu-active"
+                   *ngIf="!authInfo?.isLoggedIn()">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="register" routerLinkActive="menu-active"
+                   *ngIf="!authInfo?.isLoggedIn()">Register</a>
+            </li>
+            <li class="nav-link pull-xs-right" *ngIf="authInfo?.isLoggedIn()">
+            <li class="nav-item pull-xs-right" *ngIf="authInfo?.isLoggedIn()">
+                <a class="nav-link dropdown-toggle">
+                    {{authInfo?.user?.displayName}}
+                </a>
+                <ul class="dropdown list-unstyled">
+                    <li><a class="dropdown-item" routerLink="profile">Edit Profile</a></li>
+                    <li><a class="dropdown-item" href="#">Change Password</a></li>
+                    <li><a class="dropdown-item" routerLink="home" (click)="onLogout()">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+

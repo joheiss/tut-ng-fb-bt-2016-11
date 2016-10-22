@@ -1,0 +1,75 @@
+<div class="container">
+    <form autocomplete="off" novalidate [formGroup]="form">
+
+        <div class="form-group row">
+            <label for="description" class="col-sm-3 col-form-label">Description:</label>
+            <div class="col-sm-9">
+                <input type="text" id="description" name="description" formControlName="description"
+                       class="form-control" aria-describedby="descriptionHelp" placeholder="Enter short description">
+                <small id="descriptionHelp" class="form-text text-muted text-xs-left">
+                    <small>Enter a meaningful short description.</small>
+                </small>
+                <div *ngIf="hasError('description', 'required')" class="alert alert-danger" role="alert">
+                    <small>Please enter a short description.</small>
+                </div>
+                <div *ngIf="hasError('description', 'minlength')" class="alert alert-danger" role="alert">
+                    <small>Description too short. Please enter at least
+                        {{form.controls['description'].errors?.minlength.requiredLength}}
+                    </small>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="url" class="col-sm-3 col-form-label">URL:</label>
+            <div class="col-sm-9">
+                <input type="text" id="url" name="url" formControlName="url"
+                       class="form-control" aria-describedby="urlHelp" placeholder="Enter lesson URL">
+                <small id="urlHelp" class="form-text text-muted text-xs-left">
+                    <small>Enter the lesson's URL.</small>
+                </small>
+                <div *ngIf="hasError('url', 'required')" class="alert alert-danger" role="alert">
+                    <small>Please enter a lesson's URL.</small>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="videoUrl" class="col-sm-3 col-form-label">Video URL:</label>
+            <div class="col-sm-9">
+                <input type="text" id="videoUrl" name="videoUrl" formControlName="videoUrl"
+                       class="form-control" aria-describedby="videoUrlHelp" placeholder="Enter video URL">
+                <small id="videoUrlHelp" class="form-text text-muted text-xs-left">
+                    <small>Enter the URL to the video. If there is any.</small>
+                </small>
+                <div *ngIf="hasError('videoUrl', 'invalidUrl')" class="alert alert-danger" role="alert">
+                    <small>Please enter a valid video URL.</small>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="tags" class="col-sm-3 col-form-label">Tags:</label>
+            <div class="col-sm-9">
+                <input type="text" id="tags" name="tags" formControlName="tags"
+                       class="form-control" aria-describedby="tagsHelp" placeholder="Enter tags">
+                <small id="tagsHelp" class="form-text text-muted text-xs-left">
+                    <small>Enter tags for the lesson.</small>
+                </small>
+                <div *ngIf="hasError('tags', 'required')" class="alert alert-danger" role="alert">
+                    <small>Please enter at least one tag.</small>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="longDescription" class="col-sm-3 col-form-label">Long Description:</label>
+            <div class="col-sm-9">
+                <textarea id="longDescription" name="longDescription" formControlName="longDescription"
+                          rows="8" class="form-control" aria-describedby="longDescriptionHelp"
+                          placeholder="Enter a long description">
+                </textarea>
+                <small id="longDescriptionHelp" class="form-text text-muted text-xs-left">
+                    <small>Enter a long description for the lesson.</small>
+                </small>
+            </div>
+        </div>
+
+    </form>
+</div>

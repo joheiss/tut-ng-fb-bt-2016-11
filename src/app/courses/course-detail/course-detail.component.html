@@ -1,0 +1,38 @@
+<div class="container">
+
+    <h2 class="text-xs-center">{{course?.description}} - {{pageNo}}</h2>
+
+    <div class="row">
+        <div class="btn-toolbar row col-sm-12" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group" role="group" aria-label="First group">
+                <button type="button" (click)="onPreviousPage()" [disabled]="!_previous"
+                        class="btn btn-secondary">
+                    &lt; Prev
+                </button>
+                <button type="button" (click)="onNextPage()" [disabled]="!_next"
+                        class="btn btn-secondary">
+                    Next &gt;
+                </button>
+            </div>
+            <div class="btn-group" role="group" aria-label="Second group">
+                <button type="button" routerLink="new" [queryParams]="{courseKey: course?.$key}"
+                        class="btn btn-primary">
+                    Add Lesson
+                </button>
+            </div>
+        </div>
+
+        <jo-tut-lessons-list
+            [lessons]="lessons"
+            (selected)="navigateToLesson($event)"
+            class="row col-sm-12">
+        </jo-tut-lessons-list>
+
+    </div>
+
+    <div class="row">
+        <jo-tut-message [message]="message"></jo-tut-message>
+    </div>
+
+</div>
+

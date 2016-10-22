@@ -1,0 +1,20 @@
+<div class="container">
+
+    <h2 class="text-xs-center">Courses List</h2>
+
+    <ul class="list-group">
+        <li *ngFor="let course of courses$ | async" class="list-group-item row">
+            <div class="col-sm-1">
+                <img src="https://material.angularjs.org/latest/img/icons/angular-logo.svg"
+                    class="jo-course-logo">
+            </div>
+            <div class="col-sm-9">
+                <strong>{{course.description}}</strong>
+            </div>
+            <div class="col-sm-2">
+                <button [routerLink]="course.url" class="btn btn-secondary">View</button>
+            </div>
+        </li>
+    </ul>
+
+</div>

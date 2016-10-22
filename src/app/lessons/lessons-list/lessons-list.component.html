@@ -1,0 +1,15 @@
+<div class="container">
+
+    <ul class="list-group">
+        <li *ngFor="let lesson of lessons" (click)="onSelect(lesson)" class="list-group-item jo-selectable-list-item row">
+            <div class="col-sm-10">
+                <strong>{{lesson.description}}</strong>
+            </div>
+            <div class="col-sm-2">
+                <i class="md-icon duration-icon">access_time</i>
+                <span>{{lesson.duration}}</span>
+            </div>
+        </li>
+    </ul>
+
+</div>

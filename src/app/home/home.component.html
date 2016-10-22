@@ -1,0 +1,11 @@
+<div class="container jo-home">
+    <h2 class="text-xs-center">All Lessons</h2>
+
+    <h4 class="text-xs-center">Total Lessons: {{(filteredLessons$ | async)?.length}}</h4>
+
+    <input type="text" #input placeholder="Search" class="search-bar">
+
+    <div class="lessons-list-container v-h-center-block-parent">
+        <jo-tut-lessons-list [lessons]="filteredLessons$ | async"></jo-tut-lessons-list>
+    </div>
+</div>
